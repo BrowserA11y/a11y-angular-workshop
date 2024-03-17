@@ -17,12 +17,16 @@ import { NavigationComponent } from './navigation/navigation.component';
   imports: [RouterLinkActive, RouterLink, RouterOutlet, NavigationComponent],
 })
 export class AppComponent {
+  skipLinkPath = '';
+
   //Angular focus 4: Fix navigation - focus on the first header on the page + Alternative way to handle navigation
   constructor(private router: Router) {
     console.log(this.router.url);
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe(() => {
+        // https://medium.com/@belwerks/a-quick-note-on-skip-links-in-angular-3641a0e32a7a
+        this.skipLinkPath = `${this.router.url}#content`;
         const main = document.querySelector('main');
         if (main) {
           (main as HTMLElement).focus();
