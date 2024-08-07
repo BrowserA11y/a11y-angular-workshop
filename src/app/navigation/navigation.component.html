@@ -5,7 +5,11 @@
 <!--Accessible desktop navigation-->
 <div class="desktop-navigation">
   <div class="desktop-navigation__links" *ngFor="let menuItem of menuItems">
-    <div class="navigation-item" routerLinkActive="active-link">
+    <div
+      class="navigation-item"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
       <a [routerLink]="menuItem.url">{{ menuItem.title }}</a>
     </div>
   </div>
