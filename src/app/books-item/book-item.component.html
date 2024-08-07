@@ -1,6 +1,5 @@
 <!-- Angular focus 7: Focus manager-->
-<div
-  class="book"
+<article
   cdkMonitorSubtreeFocus
   (cdkFocusChange)="elementOrigin = formatOrigin($event); markForCheck()"
   [class]="elementOrigin"
@@ -17,4 +16,4 @@
   <a class="book__text book__details" [routerLink]="'/details/' + book?.isbn"
     >Read more<span class="visually-hidden">about {{ book?.title }}</span></a
   >
-</div>
+</article>

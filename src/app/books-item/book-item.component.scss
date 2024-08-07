@@ -1,6 +1,6 @@
 @import "../../styles.scss";
 
-.book {
+article {
   display: block;
   background-color: white;
   border-color: $primary-color;
@@ -70,8 +70,8 @@ h2 {
 }
 
 .cdk-keyboard-focused,
-.book:hover,
-.book:focus {
+article:hover,
+article:focus {
   border-width: 0.2rem;
 
   .book__header {
