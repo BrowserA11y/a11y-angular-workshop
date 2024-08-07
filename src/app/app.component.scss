@@ -7,7 +7,7 @@
 }
 
 /* Style the header */
-.header {
+header {
   width: 100%;
   background-color: styles.$primary-color-invert;
   padding: styles.$xs-spacing;
@@ -48,7 +48,7 @@
   }
 }
 
-.header .logo img {
+header .logo img {
   grid-column: 1;
   max-width: styles.$m-spacing;
   min-width: styles.$s-spacing;
@@ -60,7 +60,7 @@
 
 /* tablet breakpoint */
 @media screen and (max-width: styles.$tablet) {
-  .main {
+  main {
     padding: 10rem styles.$xs-spacing;
   }
 
@@ -75,7 +75,7 @@
   grid-column: 2;
 }
 
-.header .logo img {
+header .logo img {
   grid-column: 1;
   max-width: styles.$m-spacing;
   min-width: styles.$s-spacing;
@@ -89,7 +89,7 @@
   color: styles.$secondary-color;
 }
 
-.main {
+main {
   flex: 1 0 auto;
   padding: styles.$s-spacing styles.$m-spacing;
   background-image: url(./../assets/background-main.svg); //https://app.heazy.studio
@@ -97,7 +97,7 @@
 
 /* Responsive design */
 @media screen and (max-width: styles.$tablet) {
-  .main {
+  main {
     padding: styles.$xxs-spacing styles.$xs-spacing;
   }
 }
