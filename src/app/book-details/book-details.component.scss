@@ -1,0 +1,15 @@
+@use "../../styles";
+
+:host {
+  display: block;
+  margin: 1rem;
+}
+
+@media (min-width: styles.$tablet) {
+  .book-insights {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    line-height: 2rem;
+  }
+}
