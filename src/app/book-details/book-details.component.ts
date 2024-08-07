@@ -12,6 +12,7 @@ import { Book, BooksService } from '../books.service';
 })
 export class BookDetailComponent {
   book$!: Observable<Book>;
+  ratings = ['rating1', 'rating2', 'rating3', 'rating4', 'rating5'];
 
   constructor(private readonly bookApi: BooksService) {}
 
@@ -19,5 +20,9 @@ export class BookDetailComponent {
   set isbn(isbn: string) {
     console.log(isbn);
     this.book$ = this.bookApi.getByIsbn(isbn);
+  }
+
+  handleRating(rating: number) {
+    console.log(rating);
   }
 }

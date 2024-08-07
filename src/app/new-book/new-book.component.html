@@ -13,19 +13,20 @@
         !newForm.get('isbn')?.pristine && newForm.get('isbn')?.invalid
       "
       formControlName="isbn"
-    />
+      />
 
-    <small
-      role="alert"
-      aria-describedby="isbn-label"
-      tabindex="0"
-      *ngIf="
-        newForm.get('isbn')?.dirty && newForm.get('isbn')?.hasError('required')
-      "
-      class="form-field-hint"
-    >
-      Please insert an ISBN.
-    </small>
+    @if (
+      newForm.get('isbn')?.dirty && newForm.get('isbn')?.hasError('required')
+      ) {
+      <small
+        role="alert"
+        aria-describedby="isbn-label"
+        tabindex="0"
+        class="form-field-hint"
+        >
+        Please insert an ISBN.
+      </small>
+    }
   </label>
 
   <label for="title" class="form-field" id="title-label">
@@ -35,18 +36,19 @@
 
   <!-- Angular focus 10: *ngIf + dirty
   Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
-DISCUSSION: Single or all at once?-->
-  <small
-    role="alert"
-    aria-describedby="title-label"
-    tabindex="0"
-    *ngIf="
-      newForm.get('title')?.dirty && newForm.get('title')?.hasError('required')
-    "
-    class="form-field-hint"
-  >
-    Please insert a title.
-  </small>
+  DISCUSSION: Single or all at once?-->
+  @if (
+    newForm.get('title')?.dirty && newForm.get('title')?.hasError('required')
+    ) {
+    <small
+      role="alert"
+      aria-describedby="title-label"
+      tabindex="0"
+      class="form-field-hint"
+      >
+      Please insert a title.
+    </small>
+  }
 
   <label class="form-field">
     <span>Author</span>
@@ -63,7 +65,7 @@ DISCUSSION: Single or all at once?-->
   </label>
   <!--DICUSSION: To disable or not to disable?
   Alternative: https://medium.com/@svinkle/creating-accessible-forms-with-angular-simply-accessible-c1bc362cf89e
-https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
+  https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
   <div class="form-actions">
     <button type="submit" [disabled]="newForm.invalid">Add a new book</button>
   </div>
