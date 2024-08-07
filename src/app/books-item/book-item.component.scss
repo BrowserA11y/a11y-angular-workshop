@@ -1,16 +1,5 @@
 @use "../../styles";
 
-.book:hover,
-.book:focus {
-  border-width: 0.2rem;
-
-  .book__header {
-    border-color: styles.$secondary-color;
-    border-width: 0.2rem;
-    background-color: styles.$background-light;
-  }
-}
-
 .book {
   display: block;
   background-color: white;
@@ -78,4 +67,19 @@ h2 {
   background: url(../../assets/close.svg) center no-repeat;
   background-size: contain;
   background-color: styles.$primary-color-invert;
+}
+
+.book:hover,
+.book:focus {
+  border-width: 0.2rem;
+
+  .book__header {
+    border-color: styles.$secondary-color;
+    border-width: 0.2rem;
+    background-color: styles.$background-light;
+  }
+
+  .book__title {
+    color: styles.$primary-color;
+  }
 }
