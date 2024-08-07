@@ -19,5 +19,21 @@
   <!--https://jsfiddle.net/s0c35pqw/-->
   <!--Alternative: https://www.w3.org/WAI/tutorials/forms/custom-controls/-->
 
-  <!--5 star rating-->
+  <fieldset class="star-rating">
+    <legend>Rate this book:</legend>
+    <div>
+      <ng-container *ngFor="let rating of ratings; index as i">
+        <input
+          (click)="handleRating(i + 1)"
+          type="radio"
+          name="rating"
+          [value]="i"
+          [id]="rating"
+        />
+        <label [for]="rating">
+          <span>{{ i + 1 }} star</span>
+        </label></ng-container
+      >
+    </div>
+  </fieldset>
 </ng-container>
