@@ -1,0 +1,23 @@
+@use "../../styles";
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(18rem, 1fr)
+  ); //https://caniuse.com/?search=minmax
+  grid-gap: styles.$xs-spacing;
+}
+
+.book__close {
+  justify-self: end;
+  grid-column: 2;
+  width: 40px;
+  height: 40px;
+  text-indent: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  background: url(../../assets/close.svg) center no-repeat;
+  background-size: contain;
+  background-color: styles.$primary-color-invert;
+}

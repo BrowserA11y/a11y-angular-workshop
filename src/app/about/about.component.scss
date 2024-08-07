@@ -1,0 +1,18 @@
+@use "../../styles";
+
+.mission_text {
+  margin-bottom: styles.$s-spacing;
+  font-size: styles.$xs-font;
+  background-color: styles.$secondary-color;
+  color: styles.$primary-color-invert;
+  padding: styles.$xs-spacing;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+.mission_books {
+  padding: 1rem;
+  background-color: styles.$secondary-color;
+  color: styles.$primary-color-invert;
+  display: inline-block;
+}

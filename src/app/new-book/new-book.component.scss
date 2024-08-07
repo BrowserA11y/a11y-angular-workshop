@@ -1,0 +1,53 @@
+@use "../../styles";
+
+form {
+  margin: 0 auto;
+  max-width: 25rem;
+}
+
+.form-field {
+  display: block;
+  margin-top: 1rem;
+
+  > span {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  > input {
+    padding: 12px 20px 12px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+.form-field-hint {
+  display: block;
+  color: #3c3c3c;
+}
+
+.form-actions {
+  margin-top: 1rem;
+}
+
+button[type="submit"] {
+  background-color: styles.$primary-color-invert;
+  color: styles.$primary-color;
+  border: solid 3px styles.$primary-color;
+  padding: styles.$xxs-spacing;
+  width: 100%;
+  height: styles.$m-spacing;
+  font-size: styles.$s-font;
+  margin-top: styles.$xs-spacing;
+
+  &:hover {
+    background-color: styles.$background-light;
+  }
+
+  &:disabled {
+    background-color: styles.$primary-color-invert;
+    border: solid 3px styles.$background-light;
+  }
+}
