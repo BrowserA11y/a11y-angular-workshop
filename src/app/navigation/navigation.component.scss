@@ -1,0 +1,43 @@
+@use "../../styles";
+
+.desktop-navigation {
+  grid-column: 1;
+  align-self: center;
+  display: inline-block;
+
+  .desktop-navigation__links {
+    list-style-type: none;
+    padding-inline-start: 0;
+    display: inline-block;
+  }
+}
+
+.navigation-item {
+  display: inline-block;
+  padding: styles.$xxs-spacing styles.$xs-spacing;
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+.navigation-item a {
+  font-size: styles.$xs-font;
+  font-weight: bold;
+  color: styles.$primary-color;
+  text-decoration: none;
+}
+
+// https://angular.io/api/router/RouterLinkActive
+.active-link {
+  a {
+    color: styles.$highlight-color;
+  }
+}
+
+/* tablet breakpoint */
+@media screen and (max-width: styles.$tablet) {
+  .desktop-navigation {
+    display: none;
+  }
+}

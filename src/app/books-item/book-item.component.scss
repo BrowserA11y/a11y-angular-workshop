@@ -1,0 +1,83 @@
+@use "../../styles";
+
+.book:hover,
+.book:focus {
+  border-width: 0.2rem;
+
+  .book__header {
+    border-color: styles.$secondary-color;
+    border-width: 0.2rem;
+    background-color: styles.$background-light;
+  }
+}
+
+.book {
+  display: block;
+  background-color: white;
+  border-color: styles.$primary-color;
+  border-width: 0.1rem;
+  border-style: solid;
+  max-height: 350px;
+  overflow: hidden;
+}
+
+.book__header {
+  background-color: styles.$secondary-color;
+  border-color: styles.$primary-color;
+  border-width: 0.1rem;
+  border-bottom-style: solid;
+}
+
+// Style h2 to look like h3
+h2 {
+  font-size: styles.$xs-font;
+}
+
+.book__text {
+  padding: 0.5rem;
+}
+
+.book__header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.book__title {
+  grid-column: 1;
+  margin: 0;
+  height: 5rem;
+  padding: 0.8rem;
+  color: white;
+}
+.book__title h2 {
+  margin: 0;
+}
+
+.book__author {
+  height: 2rem;
+}
+
+.book__abstract {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.book__details {
+  color: styles.$secondary-color;
+  font-weight: bold;
+  display: block;
+  margin: styles.$xs-spacing 0;
+}
+
+.book__close {
+  justify-self: end;
+  grid-column: 2;
+  width: 40px;
+  height: 40px;
+  text-indent: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  background: url(../../assets/close.svg) center no-repeat;
+  background-size: contain;
+  background-color: styles.$primary-color-invert;
+}

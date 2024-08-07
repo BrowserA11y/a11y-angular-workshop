@@ -1,0 +1,21 @@
+@if (book$ | async; as book) {
+  <div class="book-insights">
+    <div>
+      <h1>
+        {{ book.title }}
+      </h1>
+      <h2>ISBN - {{ book.isbn }}</h2>
+      <p>
+        {{ book.abstract }}
+        <i>{{ book.author }}</i>
+      </p>
+    </div>
+    <div>
+      <img [src]="book.cover" />
+    </div>
+  </div>
+  <!--https://dev.to/grahamthedev/5-star-rating-system-actually-accessible-no-js-no-wai-aria-3idl-->
+  <!--https://jsfiddle.net/s0c35pqw/-->
+  <!--Alternative: https://www.w3.org/WAI/tutorials/forms/custom-controls/-->
+  <!--5 star rating-->
+}
