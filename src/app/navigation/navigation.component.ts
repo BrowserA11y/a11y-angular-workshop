@@ -1,6 +1,12 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 
 /**https://inclusive-components.design/menus-menu-buttons/ */
 
@@ -12,9 +18,22 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [NgIf, NgFor, RouterLink, RouterLinkActive],
 })
 export class NavigationComponent {
+  isMenuOpen = false;
   menuItems = [
     { url: 'new-book', title: 'New book' },
     { url: 'books', title: 'Books' },
     { url: 'about', title: 'About Accessible Reads' },
   ];
+
+  constructor(private router: Router) {
+    this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
+      // Close the menu upon navigation
+      if (event instanceof NavigationEnd) this.isMenuOpen = false;
+    });
+  }
+
+  onButtonClick() {
+    console.log('onButtonClick');
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }
