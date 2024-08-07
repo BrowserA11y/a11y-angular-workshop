@@ -1,0 +1,18 @@
+@import "../../styles.scss";
+
+.mission_text {
+  margin-bottom: $s-spacing;
+  font-size: $xs-font;
+  background-color: $secondary-color;
+  color: $primary-color-invert;
+  padding: $xs-spacing;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+.mission_books {
+  padding: 1rem;
+  background-color: $secondary-color;
+  color: $primary-color-invert;
+  display: inline-block;
+}
