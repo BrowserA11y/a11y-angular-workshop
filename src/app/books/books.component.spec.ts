@@ -1,8 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { MockProvider } from 'ng-mocks';
 import { of } from 'rxjs';
 import { BooksService } from '../books.service';
 import { BooksComponent } from './books.component';
+
+expect.extend(toHaveNoViolations);
 
 describe('BooksComponent', () => {
   let component: BooksComponent;
@@ -19,7 +22,8 @@ describe('BooksComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', async () => {
     expect(component).toBeTruthy();
+    expect(await axe(fixture.nativeElement)).toHaveNoViolations();
   });
 });
