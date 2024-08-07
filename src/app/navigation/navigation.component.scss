@@ -22,7 +22,7 @@
 
   &[aria-current="page"] {
     text-decoration: underline 3px;
-    text-underline-offset: $xxs-spacing;
+    text-underline-offset: styles.$xxs-spacing;
   }
 }
 
