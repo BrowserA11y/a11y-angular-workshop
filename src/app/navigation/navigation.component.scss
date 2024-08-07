@@ -30,9 +30,8 @@
 
 // https://angular.io/api/router/RouterLinkActive
 .active-link {
-  a {
-    color: styles.$highlight-color;
-  }
+  text-decoration: underline 3px;
+  text-underline-offset: styles.$xxs-spacing;
 }
 
 /* tablet breakpoint */
