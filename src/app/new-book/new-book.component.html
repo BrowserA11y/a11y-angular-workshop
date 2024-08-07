@@ -1,43 +1,58 @@
 <h1>New book</h1>
 
-<!-- Angular focus 8: ngSubmit submits on enter -->
-<form [formGroup]="newForm">
-  <!-- Yes, you can do it (larger clickable area, but just one control allowed): https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
-  <label class="form-field" id="isbn-label">
+<!-- Angular focus 8: ngSubmit submits on enter, but mind asynch validation! -->
+<form [formGroup]="newForm" (ngSubmit)="create()">
+  <!-- Explicite labels are the best -->
+  <label>
     <!-- Angular focus 9: validation -->
     <!-- DISCUSSION: Star or required?-->
-    <span>ISBN *</span>
-
-    <input formControlName="isbn" />
+    ISBN (required)
   </label>
+  <input
+    class="form-field"
+    [attr.aria-invalid]="
+      !newForm.get('isbn')?.pristine && newForm.get('isbn')?.invalid
+    "
+    aria-describedby="isbn-error"
+    formControlName="isbn"
+  />
 
-  <label class="form-field" id="title-label">
-    Title *
-    <input formControlName="title" />
-  </label>
+  @if ( newForm.get('isbn')?.touched && newForm.get('isbn')?.invalid ) {
+  <small id="isbn-error" tabindex="0" class="form-field-hint">
+    Please insert an ISBN.
+  </small>
+  }
 
-  <label class="form-field">
-    <span>Author</span>
+  <label for="title" id="title-label">Title (required)</label>
+  <input
+    class="form-field"
+    id="title"
+    formControlName="title"
+    aria-describedby="title-error"
+  />
 
-    <input formControlName="author" />
-  </label>
+  <!-- Angular focus 10: *ngIf + touched
+  Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
+  DISCUSSION: Single or all at once?-->
+  @if ( newForm.get('title')?.touched &&
+  newForm.get('title')?.hasError('required') ) {
+  <small id="title-error" tabindex="0" class="form-field-hint">
+    Please insert a title.
+  </small>
+  }
 
-  <label class="form-field">
-    <span>Cover-URL</span>
+  <label for="author"> Author </label>
+  <input class="form-field" id="author" formControlName="author" />
 
-    <input formControlName="cover" />
-  </label>
+  <label for="cover">Cover-URL</label>
+  <input class="form-field" id="cover" formControlName="cover" />
 
-  <label class="form-field">
-    <span>Abstract</span>
-
-    <input formControlName="abstract" />
-  </label>
-
+  <label for="abstract"> Abstract </label>
+  <input class="form-field" id="abstract" formControlName="abstract" />
   <!--DICUSSION: To disable or not to disable?
   Alternative: https://medium.com/@svinkle/creating-accessible-forms-with-angular-simply-accessible-c1bc362cf89e
-https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
+  https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
   <div class="form-actions">
-    <button type="submit" (click)="create()">Add a new book</button>
+    <button type="submit" [disabled]="newForm.invalid">Add a new book</button>
   </div>
 </form>

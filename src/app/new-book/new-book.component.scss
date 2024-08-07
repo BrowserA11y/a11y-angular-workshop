@@ -6,21 +6,23 @@ form {
 }
 
 .form-field {
+  padding: 12px 20px 12px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+
+  &.ng-invalid.ng-touched {
+    border: 2px solid red;
+  }
+}
+
+label {
   display: block;
   margin-top: 1rem;
 
-  > span {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  > input {
-    padding: 12px 20px 12px 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    width: 100%;
-  }
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .form-field-hint {
