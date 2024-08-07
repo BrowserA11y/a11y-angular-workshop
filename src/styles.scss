@@ -4,6 +4,7 @@ $primary-color-invert: white;
 $secondary-color: #114446;
 $background-light: #ffcb9a;
 $backgrond-light-secondary: #d1e8e2;
+$focus-ring: #aa00ff;
 
 /* Media breack points */
 $mobile: 480px;
@@ -19,6 +20,10 @@ $m-spacing: 5rem;
 $xs-font: 1.2rem;
 $s-font: 1.4rem;
 $m-font: 1.6rem;
+
+*:focus-visible {
+  outline: 3px solid $focus-ring;
+}
 
 h1 {
   font-size: $m-font;
