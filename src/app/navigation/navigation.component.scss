@@ -39,8 +39,59 @@
   text-underline-offset: styles.$xxs-spacing;
 }
 
+.hamburger {
+  font-size: 3em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* hamburger */
+.hamburgerContent {
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  border: styles.$xxs-spacing styles.$secondary-color solid;
+  border-radius: 5px;
+  background-color: styles.$primary-color-invert;
+  padding-inline-start: 0;
+  width: max-content;
+}
+
+.menu-item a {
+  text-decoration: none;
+  padding: 1rem;
+  display: block;
+  color: styles.$primary-color;
+  font-size: styles.$xs-font;
+  font-weight: bold;
+  border-radius: 5px;
+  width: max-content;
+
+  a {
+    font-size: styles.$xs-font;
+    font-weight: bold;
+    color: styles.$primary-color;
+    text-decoration: none;
+  }
+}
+
+.menu-item:focus,
+.menu-item:hover {
+  background: styles.$backgrond-light-secondary;
+}
+
+@media (min-width: styles.$tablet) {
+  .hamburgerContent,
+  .hamburger {
+    display: none;
+  }
+}
+
 /* tablet breakpoint */
 @media screen and (max-width: styles.$tablet) {
+  .hamburger {
+    display: block;
+  }
   .desktop-navigation {
     display: none;
   }
