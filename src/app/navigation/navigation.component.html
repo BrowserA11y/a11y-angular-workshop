@@ -1,6 +1,31 @@
 <!--We need a navigation, not a menu bar - see "Caution" box-->
 <!--https://www.w3.org/WAI/ARIA/apg/patterns/menubar/examples/menubar-navigation/-->
-<!--Hamburger navigation menu-->
+<div id="hamburger" class="mobile-menu">
+  <button
+    type="button"
+    id="menubutton"
+    class="hamburger"
+    aria-label="Accessible Reads Quick Links"
+    aria-controls="menuContent"
+    (click)="onButtonClick()"
+    [attr.aria-expanded]="isMenuOpen"
+  >
+    ☰
+  </button>
+  @if(isMenuOpen) {
+  <ul id="menuContent" class="hamburgerContent">
+    @for(menuItem of menuItems; track menuItem.title){
+    <li
+      class="menu-item"
+      routerLinkActive="active-link"
+      ariaCurrentWhenActive="page"
+    >
+      <a [routerLink]="menuItem.url">{{ menuItem.title }}</a>
+    </li>
+    }
+  </ul>
+  }
+</div>
 
 <!--Accessible desktop navigation-->
 <div class="desktop-navigation">
