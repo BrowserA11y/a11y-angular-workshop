@@ -20,6 +20,10 @@ form {
     border-radius: 4px;
     box-sizing: border-box;
     width: 100%;
+
+    &.ng-invalid.ng-touched {
+      border: 2px solid red;
+    }
   }
 }
 
