@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  NavigationEnd,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet,
-} from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { NavigationComponent } from './navigation/navigation.component';
 
@@ -13,7 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, NavigationComponent],
+  imports: [RouterOutlet, NavigationComponent],
 })
 export class AppComponent {
   skipLinkPath = '';
