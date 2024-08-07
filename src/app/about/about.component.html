@@ -21,6 +21,36 @@
     hope to create a more inclusive and compassionate society.
   </p>
 </div>
+@if(bookStats$ | async; as bookStats){
+<table>
+  <caption class="visually-hidden">
+    Statistics regarding our book collection
+  </caption>
+  <tbody>
+    <tr>
+      <th scope="row">Number of books:</th>
+      <td>{{ bookStats.numberOfBooks }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Number of authors:</th>
+      <td>{{ bookStats.numberOfAuthors }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Number of publishers:</th>
+      <td>{{ bookStats.numberOfPublishers }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Number of book pages:</th>
+      <td>{{ bookStats.numberOfPages | number }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Overall book value:</th>
+      <td>{{ bookStats.value | number : ".2" }} $</td>
+    </tr>
+  </tbody>
+</table>
+}
+
 <div class="mission_video">
   <iframe
     src="https://www.youtube-nocookie.com/embed/PihRANrP9o8?disablekb=1&cc_load_policy=1"
