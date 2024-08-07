@@ -1,4 +1,4 @@
-import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Observable, map } from 'rxjs';
@@ -17,7 +17,7 @@ interface BookStats {
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
   standalone: true,
-  imports: [RouterLink, NgIf, AsyncPipe, DecimalPipe],
+  imports: [RouterLink, AsyncPipe, DecimalPipe],
 })
 export class AboutComponent {
   bookStats$: Observable<BookStats>;
