@@ -11,7 +11,7 @@
   <input
     autofocus
     class="form-field"
-    [attr.aria-invalid]="
+    [aria-invalid]="
       !newForm.get('isbn')?.pristine && newForm.get('isbn')?.invalid
     "
     aria-describedby="isbn-error"
