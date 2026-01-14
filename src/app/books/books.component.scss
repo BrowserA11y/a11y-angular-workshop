@@ -7,6 +7,7 @@
     minmax(18rem, 1fr)
   ); //https://caniuse.com/?search=minmax
   grid-gap: styles.$xs-spacing;
+  list-style-type: none;
 }
 
 .book__close {
