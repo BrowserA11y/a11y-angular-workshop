@@ -9,6 +9,7 @@
     ISBN (required)
   </label>
   <input
+    autofocus
     class="form-field"
     [attr.aria-invalid]="
       !newForm.get('isbn')?.pristine && newForm.get('isbn')?.invalid
@@ -36,7 +37,7 @@
   DISCUSSION: Single or all at once?-->
   @if ( newForm.get('title')?.touched &&
   newForm.get('title')?.hasError('required') ) {
-  <small id="title-error" tabindex="0" class="form-field-hint">
+  <small id="title-error" class="form-field-hint">
     Please insert a title.
   </small>
   }
