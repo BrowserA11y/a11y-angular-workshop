@@ -1,7 +1,14 @@
-<h1 id="focusableHeader" tabindex="0">Our books</h1>
-<div class="books">
-  @let books = books$| async; @for (book of books; track book; let i = $index) {
+<h1 id="focusableHeader" tabindex="-1">Our books</h1>
+
+@if(books.length>0){
+<ul class="books">
+  @for (book of books; track book; let i = $index) {
+
   <app-book-item [id]="i" [book]="book" (bookRemoved)="removeBook(book, i)">
   </app-book-item>
+
   }
-</div>
+</ul>
+} @else {
+<p>No books!</p>
+}
