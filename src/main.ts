@@ -3,7 +3,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import {
@@ -17,7 +17,7 @@ import { routes } from './routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, ReactiveFormsModule, A11yModule),
+    provideZoneChangeDetection(),importProvidersFrom(BrowserModule, ReactiveFormsModule, A11yModule),
     provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: TitleStrategy, useClass: CustomTitleStrategy },
