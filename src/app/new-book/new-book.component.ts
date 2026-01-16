@@ -1,40 +1,49 @@
-import { Component, inject, OnDestroy } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BooksService } from '../books.service';
+
+import { form, FormField, required } from '@angular/forms/signals';
+
+interface BookData {
+  isbn: string;
+  title: string;
+  cover: string;
+  author: string;
+  abstract: string;
+}
 
 @Component({
   selector: 'app-new-book',
   templateUrl: './new-book.component.html',
   styleUrls: ['./new-book.component.scss'],
-  imports: [ReactiveFormsModule],
+  imports: [FormField],
 })
 export class NewBookComponent implements OnDestroy {
   private readonly bookService = inject(BooksService);
-  private readonly form = inject(FormBuilder);
-
-  newForm = this.buildForm();
   bookApiSubscription = new Subscription();
+
+  #bookModel = signal<BookData>({
+    isbn: '',
+    title: '',
+    cover: '',
+    author: '',
+    abstract: '',
+  });
+
+  readonly form = form(this.#bookModel, (schemaPath) => {
+    required(schemaPath.isbn, { message: 'ISBN is required' });
+    required(schemaPath.title, { message: 'Title is required' });
+  });
 
   ngOnDestroy(): void {
     this.bookApiSubscription.unsubscribe();
   }
 
   create(): void {
-    if (this.newForm.invalid) return;
+    if (this.form().invalid()) return;
 
     this.bookApiSubscription.add(
-      this.bookService.create(this.newForm.getRawValue()).subscribe()
+      this.bookService.create(this.form().value()).subscribe()
     );
-  }
-
-  private buildForm() {
-    return this.form.nonNullable.group({
-      isbn: ['', [Validators.required]],
-      title: ['', [Validators.required]],
-      cover: [''],
-      author: [''],
-      abstract: [''],
-    });
   }
 }

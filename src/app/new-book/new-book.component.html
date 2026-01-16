@@ -1,7 +1,7 @@
 <h1>New book</h1>
 
 <!-- Angular focus 8: ngSubmit submits on enter, but mind asynch validation! -->
-<form [formGroup]="newForm" (ngSubmit)="create()">
+<form (ngSubmit)="create()">
   <!-- Explicite labels are the best -->
   <label>
     <!-- Angular focus 9: validation -->
@@ -11,14 +11,12 @@
   <input
     autofocus
     class="form-field"
-    [aria-invalid]="
-      !newForm.get('isbn')?.pristine && newForm.get('isbn')?.invalid
-    "
+    [aria-invalid]="form.isbn().touched() && form.isbn().invalid()"
     aria-describedby="isbn-error"
-    formControlName="isbn"
+    [formField]="form.isbn"
   />
 
-  @if ( newForm.get('isbn')?.touched && newForm.get('isbn')?.invalid ) {
+  @if ( form.isbn().touched() && form.isbn().invalid() ) {
   <small id="isbn-error" tabindex="0" class="form-field-hint">
     Please insert an ISBN.
   </small>
@@ -28,32 +26,32 @@
   <input
     class="form-field"
     id="title"
-    formControlName="title"
+    [formField]="form.title"
     aria-describedby="title-error"
   />
 
   <!-- Angular focus 10: *ngIf + touched
   Resource: https://coryrylan.com/blog/build-accessible-forms-with-angular
   DISCUSSION: Single or all at once?-->
-  @if ( newForm.get('title')?.touched &&
-  newForm.get('title')?.hasError('required') ) {
+  @if ( form.title().touched() && form.title().invalid() ) { @for (error of
+  form.title().errors(); track error) {
   <small id="title-error" class="form-field-hint">
-    Please insert a title.
+    {{ error.message }}
   </small>
-  }
+  } }
 
   <label for="author"> Author </label>
-  <input class="form-field" id="author" formControlName="author" />
+  <input class="form-field" id="author" [formField]="form.author" />
 
   <label for="cover">Cover-URL</label>
-  <input class="form-field" id="cover" formControlName="cover" />
+  <input class="form-field" id="cover" [formField]="form.cover" />
 
   <label for="abstract"> Abstract </label>
-  <input class="form-field" id="abstract" formControlName="abstract" />
+  <input class="form-field" id="abstract" [formField]="form.abstract" />
   <!--DICUSSION: To disable or not to disable?
   Alternative: https://medium.com/@svinkle/creating-accessible-forms-with-angular-simply-accessible-c1bc362cf89e
   https://www.thisdot.co/blog/make-it-accessible-dealing-with-form-errors-in-angular-->
   <div class="form-actions">
-    <button type="submit" [disabled]="newForm.invalid">Add a new book</button>
+    <button type="submit" [disabled]="form().invalid()">Add a new book</button>
   </div>
 </form>
